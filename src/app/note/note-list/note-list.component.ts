@@ -24,4 +24,13 @@ export class NoteListComponent implements OnInit {
       )
     }
   }
+
+  onAddNote(){
+    this.notes.push(new Note(
+      ``,
+      ``,
+      new Date(),
+      new Date()
+    ))
+  }
 }

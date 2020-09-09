@@ -14,5 +14,4 @@ export class NoteItemComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }
