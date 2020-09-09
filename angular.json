@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-notepad"
+    }
+  },
+  "defaultProject": "angular-notepad",
+  "cli": {
+    "analytics": "5b0d7f3a-77c2-48dd-a14e-362c36102ffd"
+  }
 }

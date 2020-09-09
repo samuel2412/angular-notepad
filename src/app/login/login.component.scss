@@ -1,0 +1,19 @@
+.card {
+  width: 100%;
+  padding: 30px;
+  background-color:rgba(255, 255, 255, 0.95);
+}
+
+.row {
+  height: 100vh;
+  background: url(https://firebasestorage.googleapis.com/v0/b/angular-notepad-40968.appspot.com/o/jessica-lewis-4VobVY75Nas-unsplash.jpg?alt=media&token=3a5f4c24-37e5-4b35-80e7-a81b8c793b88);
+  position: relative;
+}
+
+.credit {
+  z-index: 10;
+  bottom: 19px;
+  background: transparent;
+  position: absolute;
+ 
+}
