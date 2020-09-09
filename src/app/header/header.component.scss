@@ -1,0 +1,12 @@
+@import "../util/variables.scss";
+
+.navbar {
+  background: $base-color;
+
+  span{
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
+}
+
