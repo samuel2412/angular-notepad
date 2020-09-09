@@ -1,1 +1,11 @@
-<p>note-item works!</p>
+<div class="card m-1" appElevation>
+  <div *ngIf="note" class="card-body">
+    <h5 class="card-title">{{note.title}}</h5>
+    <p class="card-text">{{note.text }}</p>
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+  <div *ngIf="!note" class="card-body d-flex justify-content-center align-items-center">
+    <i class="icon-plus fas fa-plus fa-3x"></i>
+  </div>
+</div>

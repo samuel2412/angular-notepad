@@ -1,0 +1,12 @@
+@import "../../util/variables.scss";
+
+.card {
+  height: 150px;
+}
+
+.icon-plus {
+  border-radius: 100%;
+  border: 4px solid $base-color;
+  padding: 5px;
+  color: $base-color;
+}
