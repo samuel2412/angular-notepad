@@ -1,8 +1,8 @@
 <div class="row">
-  <div *ngFor="let note of notes" class="col-12 col-md-6">
+  <div *ngFor="let note of notes" class="col-12 col-md-6 mb-3">
     <app-note-item [note]="note" ></app-note-item>
   </div>
-  <div class="col-12 col-md-6">
+  <div class="col-12 col-md-6 mb-3">
     <app-note-item style="cursor: pointer;" (click)="openModal(template)" ></app-note-item>
   </div>
 </div>
@@ -11,7 +11,7 @@
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">New Note</h4>
-    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+    <button type="button" class="close pull-right" aria-label="Close" (click)="onCloseModal()">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
@@ -23,7 +23,7 @@
       </div>
       <alert *ngIf="title.invalid && title.touched" type="danger">
         <span class="help-block">
-          {{ title.errors.required ? 'Title is required.' : 'Title character limit is 30.' }}
+          {{ title.errors.required ? 'Title is required.' : 'Title character limit is 50.' }}
         </span>
       </alert>
       <div class="form-group">

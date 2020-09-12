@@ -7,7 +7,14 @@ export interface State {
 }
 
 const initalState: State = {
-  notes: []
+  notes: [
+    new Note(
+      `Nota hardcoded`,
+      `asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133`,
+      new Date(),
+      new Date()
+    )
+  ]
 }
 
 const noteReducer = (state = initalState, action: AppActions.AppActions) =>{

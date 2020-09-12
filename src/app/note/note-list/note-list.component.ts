@@ -18,6 +18,10 @@ export class NoteListComponent implements OnInit, OnDestroy {
   notes: Note[] = []
   storeSub: Subscription
   modalRef: BsModalRef;
+  config = {
+    backdrop: true,
+    ignoreBackdropClick: true
+  };
   form: FormGroup
   formNote: Note = new Note(``,``, null, null)
 
@@ -31,7 +35,7 @@ export class NoteListComponent implements OnInit, OnDestroy {
       this.notes = notes
     })
     this.form = new FormGroup({
-      title: new FormControl(this.formNote.title, [Validators.required, Validators.maxLength(30)]),
+      title: new FormControl(this.formNote.title, [Validators.required, Validators.maxLength(50)]),
       text: new FormControl(this.formNote.text,[Validators.required, Validators.maxLength(200)])
     })
   }
@@ -41,7 +45,7 @@ export class NoteListComponent implements OnInit, OnDestroy {
   }
 
   openModal(template: TemplateRef<any>) {
-    this.modalRef = this.modalService.show(template);
+    this.modalRef = this.modalService.show(template, this.config);
   }
 
   get title(){
@@ -59,6 +63,10 @@ export class NoteListComponent implements OnInit, OnDestroy {
       new Date(),
       new Date()
     )) )
+    this.onCloseModal()
+  }
+
+  onCloseModal(){
     this.modalRef.hide()
     this.form.reset()
   }

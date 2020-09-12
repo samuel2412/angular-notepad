@@ -1,9 +1,8 @@
-<div class="card m-1" appElevation>
+<div class="card m-1 h-100" appElevation>
   <div *ngIf="note" class="card-body">
     <h5 class="card-title">{{note.title}}</h5>
     <p class="card-text">{{note.text }}</p>
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <button class="btn btn-outline-primary btn-block">Edit</button>
   </div>
   <div *ngIf="!note" class="card-body d-flex justify-content-center align-items-center">
     <button type="button" class="icon-plus btn"><i class="fas fa-plus fa-3x"></i></button>
