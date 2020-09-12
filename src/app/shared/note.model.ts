@@ -3,6 +3,7 @@ export class Note {
     public title: string,
     public text: string,
     public createdAt: Date,
-    public editedAt: Date
-  ){}
+    public editedAt: Date,
+    public id?: number,
+    ){}
 }

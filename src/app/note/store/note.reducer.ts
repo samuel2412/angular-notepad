@@ -12,7 +12,8 @@ const initalState: State = {
       `Nota hardcoded`,
       `asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133`,
       new Date(),
-      new Date()
+      new Date(),
+      0,
     )
   ]
 }
@@ -24,6 +25,18 @@ const noteReducer = (state = initalState, action: AppActions.AppActions) =>{
         ...state,
         notes: [...state.notes, action.payload]
       }
+
+    case AppActions.UPDATE_NOTE:
+    const updatedNote = {
+      ...state.notes[action.payload.id],
+      ...action.payload
+    }
+    const updatedNotes = [...state.notes]
+    updatedNotes[action.payload.id] = updatedNote
+    return{
+      ...state,
+      notes: updatedNotes
+    }
    
     default:
       return state
