@@ -13,7 +13,6 @@ const initalState: State = {
       `asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133`,
       new Date(),
       new Date(),
-      0,
     )
   ]
 }
@@ -27,16 +26,13 @@ const noteReducer = (state = initalState, action: AppActions.AppActions) =>{
       }
 
     case AppActions.UPDATE_NOTE:
-    const updatedNote = {
-      ...state.notes[action.payload.id],
-      ...action.payload
-    }
-    const updatedNotes = [...state.notes]
-    updatedNotes[action.payload.id] = updatedNote
-    return{
-      ...state,
-      notes: updatedNotes
-    }
+      const updatedNote = {...state.notes[action.payload.index], ...action.payload.note}
+      const updatedNotes = [...state.notes]
+      updatedNotes[action.payload.index] = updatedNote
+      return {
+        ...state,
+        notes: updatedNotes
+      }
    
     default:
       return state

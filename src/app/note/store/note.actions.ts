@@ -13,7 +13,7 @@ export class AddNote implements Action {
 
 export class UpdateNote implements Action {
   readonly type = UPDATE_NOTE
-  constructor(public payload: Note){}
+  constructor(public payload: {note: Note, index: number}){}
 }
 
 export type AppActions =

@@ -2,9 +2,9 @@
   <div *ngIf="note" class="card-body">
     <h5 class="card-title">{{note.title}}</h5>
     <p class="card-text">{{note.text }}</p>
-   <app-note-edit [isEdit]="true" [note]="note" ></app-note-edit>
+   <app-note-edit [note]="note" [index]="index"></app-note-edit>
   </div>
   <div *ngIf="!note" class="card-body d-flex justify-content-center align-items-center">
-    <app-note-edit [isEdit]="false" ></app-note-edit>
+    <app-note-edit ></app-note-edit>
   </div>
 </div>

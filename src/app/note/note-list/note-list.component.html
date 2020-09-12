@@ -1,6 +1,6 @@
 <div class="row">
-  <div *ngFor="let note of notes" class="col-12 col-md-6 mb-3">
-    <app-note-item [note]="note" ></app-note-item>
+  <div *ngFor="let note of notes;index as index" class="col-12 col-md-6 mb-3">
+    <app-note-item [note]="note" [index]="index" ></app-note-item>
   </div>
   <div class="col-12 col-md-6 mb-3">
     <app-note-item style="cursor: pointer;"></app-note-item>

@@ -20,14 +20,15 @@ export class NoteEditComponent implements OnInit{
   };
   form: FormGroup
   formNote: Note = new Note(``,``, null, null)
-  @Input() isEdit: boolean;
   @Input() note: Note;
-
+  @Input() index: number
+  isEdit:boolean
   constructor(private store: Store<fromApp.AppState>,private modalService: BsModalService) {}
 
   ngOnInit(): void {
+    this.isEdit = this.index !== undefined
     if(this.isEdit){
-      this.formNote = this.note
+      this.formNote = {...this.note}
     }
     this.form = new FormGroup({
       title: new FormControl(this.formNote.title, [Validators.required, Validators.maxLength(50)]),
@@ -49,13 +50,15 @@ export class NoteEditComponent implements OnInit{
     const {title, text} = this.form.value
     if(this.isEdit){
       this.store.dispatch( new NoteActions.UpdateNote(
-        new Note(
-          title,
-          text,
-          this.note.createdAt,
-          new Date(),
-          this.note.id
-        )
+          {
+          note: new Note(
+            title,
+            text,
+            this.note.createdAt,
+            new Date(),
+          ),
+          index: this.index
+        }
       ) )
     } else {
       this.store.dispatch( new NoteActions.AddNote(new Note(

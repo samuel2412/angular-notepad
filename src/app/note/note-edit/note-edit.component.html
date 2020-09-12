@@ -1,6 +1,6 @@
 <button *ngIf="isEdit" type="button" class="btn btn-outline-primary btn-block" (click)="openModal(template)">Edit</button>
 <button *ngIf="!isEdit" type="button" class="icon-plus btn"  (click)="openModal(template)" ><i class="fas fa-plus fa-3x"></i></button>
- 
+
 <ng-template #template>
   <div class="modal-header">
     <h4 class="modal-title pull-left">{{isEdit ? 'Edit' : 'New'}} Note</h4>

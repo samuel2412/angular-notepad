@@ -9,6 +9,7 @@ import { Note } from '../../shared/note.model';
 })
 export class NoteItemComponent implements OnInit {
   @Input() note: Note
+  @Input() index: Number
 
   constructor() { }
 
