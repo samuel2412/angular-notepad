@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators'
 
 import { Note } from '../../shared/note.model'
 import * as fromApp from '../../store/app.reducer'
-
+import * as NoteActions from '../store/note.actions'
 @Component({
   selector: 'app-note-list',
   templateUrl: './note-list.component.html',
@@ -18,6 +18,7 @@ export class NoteListComponent implements OnInit, OnDestroy {
   constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch( new  NoteActions.FetchNotes ) 
     this.storeSub = this.store.select('note')
     .pipe(
       map(noteState => noteState.notes)

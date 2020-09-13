@@ -61,7 +61,7 @@ export class NoteEditComponent implements OnInit{
         }
       ) )
     } else {
-      this.store.dispatch( new NoteActions.AddNote(new Note(
+      this.store.dispatch( new NoteActions.AddNoteStart(new Note(
         title,
         text,
         new Date(),

@@ -19,6 +19,12 @@ const initalState: State = {
 
 const noteReducer = (state = initalState, action: AppActions.AppActions) =>{
   switch (action.type) {
+    case AppActions.SET_NOTES:
+      return {
+        ...state,
+        notes: [...action.payload]
+      }
+
     case AppActions.ADD_NOTE:
       return {
         ...state,
