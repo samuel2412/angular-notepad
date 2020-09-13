@@ -6,11 +6,13 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { AlertModule } from 'ngx-bootstrap/alert';
 
 import { ElevationDirective } from '../shared/elevation.directive';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component'
 
 
 @NgModule({
   declarations: [
-    ElevationDirective
+    ElevationDirective,
+    LoadingSpinnerComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { ElevationDirective } from '../shared/elevation.directive';
     CommonModule,
     ReactiveFormsModule,
     ModalModule,
-    AlertModule
+    AlertModule,
+    LoadingSpinnerComponent
   ]
 })
 export class SharedModule { }

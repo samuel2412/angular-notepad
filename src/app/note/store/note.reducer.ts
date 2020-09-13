@@ -3,26 +3,27 @@ import { Note } from '../../shared/note.model'
 import * as AppActions from './note.actions'
 
 export interface State {
-  notes: Note[]
+  notes: Note[],
+  loading: boolean
 }
 
 const initalState: State = {
-  notes: [
-    new Note(
-      `Nota hardcoded`,
-      `asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133 asdasddddddddddddddddddd2133`,
-      new Date(),
-      new Date(),
-    )
-  ]
+  notes: [],
+  loading: false,
 }
 
 const noteReducer = (state = initalState, action: AppActions.AppActions) =>{
   switch (action.type) {
+    case AppActions.FETCH_NOTES:
+      return{
+        ...state,
+        loading: true
+      }
     case AppActions.SET_NOTES:
       return {
         ...state,
-        notes: [...action.payload]
+        notes: [...action.payload],
+        loading: false
       }
 
     case AppActions.ADD_NOTE:

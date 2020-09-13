@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
-import { map } from 'rxjs/operators'
 
 import { Note } from '../../shared/note.model'
 import * as fromApp from '../../store/app.reducer'
@@ -13,17 +12,16 @@ import * as NoteActions from '../store/note.actions'
 })
 export class NoteListComponent implements OnInit, OnDestroy {
   notes: Note[] = []
+  loading: boolean
   storeSub: Subscription
 
   constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
     this.store.dispatch( new  NoteActions.FetchNotes ) 
-    this.storeSub = this.store.select('note')
-    .pipe(
-      map(noteState => noteState.notes)
-    ).subscribe(notes =>{
-      this.notes = notes
+    this.storeSub = this.store.select('note').subscribe(noteState =>{
+      this.loading = noteState.loading
+      this.notes = noteState.notes
     })
   }
 
