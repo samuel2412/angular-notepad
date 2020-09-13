@@ -28,6 +28,7 @@ import { NoteService } from '../note.service'
               response[key].text,
               response[key].createdAt,
               response[key].editedAt,
+              key
             )
           )
        })
@@ -43,8 +44,9 @@ import { NoteService } from '../note.service'
       ofType(NoteActions.ADD_NOTE_START),
       switchMap((action: NoteActions.AddNoteStart)=>{
         return this.noteService.saveNote(action.payload).pipe(
-          map(() => {
-            return new NoteActions.AddNote(action.payload)
+          map((response: {name:string}) => {
+            const {title, text, createdAt, editedAt} = action.payload
+            return new NoteActions.AddNote( new Note(title,text,createdAt,editedAt,response.name) )
           })
         )
       })

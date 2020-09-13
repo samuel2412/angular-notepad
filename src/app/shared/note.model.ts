@@ -4,5 +4,6 @@ export class Note {
     public text: string,
     public createdAt: Date,
     public editedAt: Date,
+    public id?: string,
     ){}
 }
