@@ -1,4 +1,11 @@
-<button *ngIf="isEdit" type="button" class="btn btn-outline-primary btn-block" (click)="openModal(template)">Edit</button>
+<div class="row">
+  <div class="col-5 col-md-4 col-lg-3">
+    <button *ngIf="isEdit" type="button" class="btn btn-outline-danger btn-block" (click)="onDeleteNote()">Delete</button>
+  </div>
+  <div class="col-7 col-md-8 col-lg-9">
+    <button *ngIf="isEdit" type="button" class="btn btn-outline-primary btn-block" (click)="openModal(template)">Edit</button>
+  </div>
+</div>
 <button *ngIf="!isEdit" type="button" class="icon-plus btn"  (click)="openModal(template)" ><i class="fas fa-plus fa-3x"></i></button>
 
 <ng-template #template>

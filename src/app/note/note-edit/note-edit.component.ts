@@ -71,6 +71,12 @@ export class NoteEditComponent implements OnInit{
     this.onCloseModal()
   }
 
+  onDeleteNote(){
+    if( confirm('You really want to delete this note?') ){
+      this.store.dispatch( new NoteActions.DeleteNote(this.index) )
+    }
+  }
+
   onCloseModal(){
     this.modalRef.hide()
     this.form.reset()

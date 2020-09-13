@@ -1,7 +1,9 @@
 <div class="card m-1 h-100" appElevation>
   <div *ngIf="note" class="card-body">
-    <h5 class="card-title">{{note.title}}</h5>
-    <p class="card-text">{{note.text }}</p>
+    <div>
+      <h5 class="card-title">{{note.title}}</h5>
+      <p class="card-text">{{note.text }}</p>
+    </div>
    <app-note-edit [note]="note" [index]="index"></app-note-edit>
   </div>
   <div *ngIf="!note" class="card-body d-flex justify-content-center align-items-center">

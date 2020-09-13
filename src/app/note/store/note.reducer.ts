@@ -33,6 +33,12 @@ const noteReducer = (state = initalState, action: AppActions.AppActions) =>{
         ...state,
         notes: updatedNotes
       }
+
+    case AppActions.DELETE_NOTE:
+      return {
+        ...state,
+        notes: state.notes.filter((el,index) => index !== action.payload)
+      }
    
     default:
       return state
