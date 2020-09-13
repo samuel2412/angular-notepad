@@ -49,13 +49,14 @@ export class NoteEditComponent implements OnInit{
   onAddNote(){
     const {title, text} = this.form.value
     if(this.isEdit){
-      this.store.dispatch( new NoteActions.UpdateNote(
+      this.store.dispatch( new NoteActions.UpdateNoteStart(
           {
           note: new Note(
             title,
             text,
             this.note.createdAt,
             new Date(),
+            this.note.id
           ),
           index: this.index
         }
@@ -73,7 +74,11 @@ export class NoteEditComponent implements OnInit{
 
   onDeleteNote(){
     if( confirm('You really want to delete this note?') ){
-      this.store.dispatch( new NoteActions.DeleteNote(this.index) )
+      const payload = {
+        index: this.index,
+        id: this.note.id
+      }
+      this.store.dispatch( new NoteActions.DeleteNoteStart(payload) )
     }
   }
 

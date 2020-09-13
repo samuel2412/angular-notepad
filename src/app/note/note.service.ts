@@ -17,5 +17,14 @@ export class NoteService {
   saveNote(note: Note){
     return this.http.post(`${this.baseUrl}/notes.json`,note)
   }
+
+  updateNote(note: Note){
+    const {title, text, createdAt, editedAt} = note
+    return this.http.put(`${this.baseUrl}/notes/${note.id}.json`,{ title, text, createdAt, editedAt })
+  }
+
+  deleteNote(id: string){
+    return this.http.delete(`${this.baseUrl}/notes/${id}.json`)
+  }
   
 }

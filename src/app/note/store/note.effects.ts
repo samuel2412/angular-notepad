@@ -52,4 +52,30 @@ import { NoteService } from '../note.service'
       })
     )
 
+    @Effect()
+    updateNote = this.actions$.pipe(
+      ofType(NoteActions.UPDATE_NOTE_START),
+      switchMap((action: NoteActions.UpdateNoteStart) => {
+        return this.noteService.updateNote(action.payload.note).pipe(
+          map(()=>{
+            const {title, text, createdAt, editedAt} = action.payload.note
+            return new NoteActions.UpdateNote( {note: new Note(title, text,createdAt,editedAt), index: action.payload.index} )
+          })
+        )
+      })
+    )
+
+    @Effect()
+    deleteNote = this.actions$.pipe(
+      ofType(NoteActions.DELETE_NOTE_START),
+      switchMap((action: NoteActions.DeleteNoteStart)=>{
+        console.log(action)
+        return this.noteService.deleteNote(action.payload.id).pipe(
+          map(()=>{
+            return new NoteActions.DeleteNote(action.payload.index)
+          })
+        )
+      })
+    )
+
   }
