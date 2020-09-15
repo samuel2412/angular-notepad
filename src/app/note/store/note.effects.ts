@@ -21,17 +21,19 @@ import { NoteService } from '../note.service'
       }),
       map((response: Note[]) => {
        const notes: Note[] =[]
-       Object.keys(response).map(key => {
-          notes.push(
-            new Note(
-              response[key].title,
-              response[key].text,
-              response[key].createdAt,
-              response[key].editedAt,
-              key
+       if(response !== null){
+        Object.keys(response).map(key => {
+            notes.push(
+              new Note(
+                response[key].title,
+                response[key].text,
+                response[key].createdAt,
+                response[key].editedAt,
+                key
+              )
             )
-          )
-       })
+        })
+      }
        return notes
       }),
       map(notes => {
@@ -69,7 +71,6 @@ import { NoteService } from '../note.service'
     deleteNote = this.actions$.pipe(
       ofType(NoteActions.DELETE_NOTE_START),
       switchMap((action: NoteActions.DeleteNoteStart)=>{
-        console.log(action)
         return this.noteService.deleteNote(action.payload.id).pipe(
           map(()=>{
             return new NoteActions.DeleteNote(action.payload.index)

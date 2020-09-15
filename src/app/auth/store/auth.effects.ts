@@ -156,7 +156,6 @@ export class AuthEffects {
   authLogout = this.actions$.pipe(
     ofType(AuthActions.LOGOUT),
     tap(()=>{
-      console.log('oi')
       localStorage.removeItem('userData')
       this.authService.clearLogoutTimer()
       this.router.navigateByUrl('login')

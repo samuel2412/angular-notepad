@@ -11,20 +11,24 @@ export class NoteService {
   constructor(private http: HttpClient) { }
 
   fetchNotes():Observable<Note[]>{
-    return this.http.get<Note[]>(`${environment.baseUrl}/notes.json`)
+    const user = JSON.parse(localStorage.getItem('userData'))
+    return this.http.get<Note[]>(`${environment.baseUrl}/notes/${user.id}.json`)
   }
 
   saveNote(note: Note){
-    return this.http.post(`${environment.baseUrl}/notes.json`,note)
+    const user = JSON.parse(localStorage.getItem('userData'))
+    return this.http.post(`${environment.baseUrl}/notes/${user.id}.json`,note)
   }
 
   updateNote(note: Note){
+    const user = JSON.parse(localStorage.getItem('userData'))
     const {title, text, createdAt, editedAt} = note
-    return this.http.put(`${environment.baseUrl}/notes/${note.id}.json`,{ title, text, createdAt, editedAt })
+    return this.http.put(`${environment.baseUrl}/notes/${user.id}/${note.id}.json`,{ title, text, createdAt, editedAt })
   }
 
   deleteNote(id: string){
-    return this.http.delete(`${environment.baseUrl}/notes/${id}.json`)
+    const user = JSON.parse(localStorage.getItem('userData'))
+    return this.http.delete(`${environment.baseUrl}/notes/${user.id}/${id}.json`)
   }
   
 }
