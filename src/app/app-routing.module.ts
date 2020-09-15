@@ -14,10 +14,6 @@ const routes: Routes = [
     component: AuthComponent
   },
   {
-    path:'signup',
-    component: AuthComponent
-  },
-  {
     path:'note',
     loadChildren: () => import('./note/note.module').then(module => {
       return module.NoteModule

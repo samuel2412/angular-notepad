@@ -5,6 +5,7 @@ import { NoteItemComponent } from './note-item/note-item.component'
 import { NoteRoutingModule } from './note-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { NoteEditComponent } from './note-edit/note-edit.component';
+import { NoteComponent } from './note.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { NoteEditComponent } from './note-edit/note-edit.component';
     NoteListComponent,
     NoteItemComponent,
     NoteEditComponent,
+    NoteComponent,
   ],
   providers: [],
 })

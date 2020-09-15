@@ -13,10 +13,10 @@ const initialState: State = {
   loading: false
 }
 
-export const authReducer = (state = initialState, action: AuthActions.AuthActions) => {
+const authReducer = (state = initialState, action: AuthActions.AuthActions ) => {
   switch (action.type) {
-    case AuthActions.SIGNUP_START:
     case AuthActions.LOGIN_START:
+    case AuthActions.SIGNUP_START:
       return {
         ...state,
         authError: null,
@@ -24,7 +24,7 @@ export const authReducer = (state = initialState, action: AuthActions.AuthAction
       }
 
     case AuthActions.AUTHENTICATE_SUCCESS:
-      const user = new User (
+      const user = new User(
         action.payload.email,
         action.payload.userId,
         action.payload.token,
@@ -42,12 +42,26 @@ export const authReducer = (state = initialState, action: AuthActions.AuthAction
         ...state,
         user: null,
         authError: action.payload,
-        loading: false
+        loading: false,
       }
-      
-    default:
+
+    case AuthActions.LOGOUT:
       return {
-        ...state
+        ...state,
+        authError: null,
+        user: null
       }
+
+    case AuthActions.CLEAR_ERROR:
+      return {
+        ...state,
+        authError: null
+
+      }
+
+    default:
+     return state
   }
 }
+
+export { authReducer }

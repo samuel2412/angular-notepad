@@ -5,6 +5,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { HttpClientModule } from '@angular/common/http'
 import { EffectsModule } from '@ngrx/effects';
+import { HTTP_INTERCEPTORS } from '@angular/common/http'
  
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,8 @@ import { SharedModule } from './shared/shared.module';
 import * as fromApp from './store/app.reducer';
 import { environment } from '../environments/environment';
 import { NoteEffects } from './note/store/note.effects'
+import { AuthEffects } from './auth/store/auth.effects'
+import { AuthInterceptorService } from './auth/auth-interceptor.service'
 
 @NgModule({
   declarations: [
@@ -31,9 +34,11 @@ import { NoteEffects } from './note/store/note.effects'
     BrowserAnimationsModule,
     StoreModule.forRoot(fromApp.appReducer),
     StoreDevtoolsModule.instrument({ logOnly: environment.production }),
-    EffectsModule.forRoot([NoteEffects]),
+    EffectsModule.forRoot([NoteEffects, AuthEffects]),
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

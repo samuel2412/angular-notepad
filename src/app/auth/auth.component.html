@@ -10,7 +10,10 @@
           <label for="password">Password</label>
           <input formControlName="password"  name="password" type="password" class="form-control" id="password">
         </div>
-        <button type="submit" class="btn btn-outline-primary btn-block">{{ isLogin ? 'Login' : 'Signup' }}</button>
+        <alert type="danger" *ngIf="error">
+          {{ error }}
+        </alert>
+        <button [disabled]="form.invalid" type="submit" class="btn btn-outline-primary btn-block">{{ isLogin ? 'Login' : 'Signup' }}</button>
         <div class="mt-2">
           <a style="cursor: pointer;" (click)="onSwitchMode()">
             {{ isLogin ? 'Don\'t have an account? Click here to sing up!' : 'Already have an account? Click here to login!' }}
