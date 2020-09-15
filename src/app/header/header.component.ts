@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit,OnDestroy {
   constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
+    this.store.dispatch( new AuthActions.AutoLogin() )
     this.storeSub = this.store.select('auth').pipe(
       map(authState => authState.user)
     ).subscribe(user => {
